@@ -1,0 +1,47 @@
+********************************v2.01**************************************************
+* InputFile for RUNSWAP.f90                                                 
+*
+RunSWAPExample.swp    ! Name of .swp masterfile
+RunSWAPExample.dat    ! Name of file with parameter realizations (use Tr, Ts, Alpha (cm-1), n, l, Ks (cm/d) in this order, optional headers or blank lines, last line starts with an asterisk: * end of file)
+1                     ! Specify number of layers, positive numbers for external file organized 1 1 1 2 2 2 3 3 3 ... or negative numbers for external file organized 1 2 3 1 2 3 1 2 3)
+1                     ! Number of years to be read from SWAP outputfiles (max 100) - only for BAL file options (option 2 below)
+* Specify output options (see information below)
+@ Opt  ff    !@ add max 30 options, finish with 0 0
+   2   1
+   2   2
+   2   3
+   2   4 
+0    0   ! 0 0 end of option lines  
+*
+
+
+Output Options:
+* Option 1: Reads INC file, Qbottom after ff days
+* Option 2: Reads BAL file, ff: 1=Bottom flux  2=Evaporation  3=Transpiration   4=Runoff   5=Interception
+* Option 3 Any value >=10 indicates FC depth, positive for WC negative for FC): Reads VAP file, FC according to ff (in 1/10 mm/d, e.g. ff=20 means 2 mm/d or 0.2 cm/d) - use with no rain and no evaporation scenario
+* Option 4: Reads STR file, ff=1 Drought stress ff=2 Wet stress
+
+
+         For use with RunSwap v. 2.0 - Quirijn de Jong van Lier 2020'
+         qdjvlier@usp.br'
+
+         Default info file is C:\SWAP4\RunSWAP.stc'
+
+           Invoke with
+                RUNSWAP filename[.stc]
+             to use with another filename
+             e.g. [RUNSWAP test] will use C:\SWAP4\test.stc
+             or [RUNSWAP data.dat] will use C:\SWAP4\data.dat
+
+           Invoke with
+                RUNSWAP filename[.stc]] Drive:'
+             to use another drive
+             e.g. [RUNSWAP info.tmp g:] will use G:\SWAP4\info.tmp
+
+           Invoke with
+               RUNSWAP filename[.stc] Drive: Directory'
+             to use another drive and directory' 
+               e.g. [RUNSWAP data F: experiment] will use F:\Experiment\Data.stc'
+
+
+ 
